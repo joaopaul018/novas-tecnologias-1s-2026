@@ -1,0 +1,47 @@
+Exercício 1 – Cadastro e análise simples de veículos
+veiculos = [
+    {"marca": "Toyota", "modelo": "Corolla", "preco": 120000, "ano": 2022},
+    {"marca": "Honda", "modelo": "Civic", "preco": 110000, "ano": 2021},
+    {"marca": "Ford", "modelo": "Ka", "preco": 55000, "ano": 2020},
+    {"marca": "Chevrolet", "modelo": "Onix", "preco": 70000, "ano": 2021},
+    {"marca": "Volkswagen", "modelo": "Golf", "preco": 95000, "ano": 2019}
+]
+
+# Exibir todos os veículos
+print("Veículos cadastrados:")
+for v in veiculos:
+    print(f"{v['marca']} {v['modelo']} - {v['preco']}")
+
+# Calcular preço médio
+preco_total = sum(v['preco'] for v in veiculos)
+preco_medio = preco_total / len(veiculos)
+print(f"\nPreço médio dos veículos: {int(preco_medio)}")
+
+# Veículos acima da média
+print("Veículos acima da média:")
+for v in veiculos:
+    if v['preco'] > preco_medio:
+        print(f"{v['marca']} {v['modelo']} - {v['preco']}")
+
+Exercício 2 – Sistema simples de financiamento
+
+
+def calcular_financiamento(preco, entrada, parcelas):
+    taxa = 0.015  # 1.5% ao mês
+    valor_financiado = preco - entrada
+    valor_total = valor_financiado * (1 + taxa * parcelas)
+    parcela = valor_total / parcelas
+    return parcela
+
+# Programa principal
+preco_veiculo = 80000  # Exemplo de preço
+
+entrada = float(input("Digite o valor da entrada: "))
+parcelas = int(input("Digite o número de parcelas: "))
+
+if parcelas > 72:
+    print("Número máximo de parcelas é 72.")
+else:
+    valor_parcela = calcular_financiamento(preco_veiculo, entrada, parcelas)
+    print(f"Valor da parcela: {valor_parcela:.2f}")
+
